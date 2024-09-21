@@ -5,6 +5,7 @@ export default function App() {//   REMEMBER************just components bnane ke
   return (
     <>
     <div className="">
+     
       <PageTitle text={"Complaints"}/>
     </div>
     </>
