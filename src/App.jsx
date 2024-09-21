@@ -1,10 +1,9 @@
+import React from 'react'
 
-import './App.css'
-
-function App() {
-  (
-    <></>
+export default function App() {
+  return (
+    <>
+    <div className="h-screen w-full bg-zinc-400">Pccoer pmpml</div>
+    </>
   )
 }
-
-export default App
