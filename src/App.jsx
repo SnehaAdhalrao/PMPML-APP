@@ -1,9 +1,12 @@
 import React from 'react'
+import PageTitle from './Components/PageTitle';
 
-export default function App() {
+export default function App() {//   REMEMBER************just components bnane ke baad brach open krni hain
   return (
     <>
-    <div className="h-screen w-full bg-zinc-400">Pccoer pmpml</div>
+    <div className="">
+      <PageTitle text={"Complaints"}/>
+    </div>
     </>
   )
 }
