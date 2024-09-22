@@ -6,7 +6,7 @@ import { CgProfile } from "react-icons/cg";
 
 export default function PageTitle({text}) {
   return (
-    <div className='mx-auto bg-green-500 flex items-center justify-between m-10 p-5  h-[30px]'>
+    <div className='mx-auto bg-green-400 flex items-center justify-between  p-5  h-[30px]'>
        
 <IconContext.Provider value={{  className: "global-class-name size-5em" }}>
   <div>
@@ -19,7 +19,7 @@ export default function PageTitle({text}) {
       
              
 <IconContext.Provider value={{  className: "global-class-name " ,size:"1.5em"}}>
-  <div className='flex gap-4 -translate-x-[60px]'>
+  <div className='flex gap-9 -translate-x-[60px]'>
   <HiMenuAlt2 />
   <CgProfile />
   </div>
