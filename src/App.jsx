@@ -9,7 +9,7 @@ export default function App() {//   REMEMBER************just components bnane ke
     <div className="">
      
       <PageTitle text={"Complaints"}/>
-// >>>>>>> main
+{/* // >>>>>>> main */}
       <Complaits_page/>
     </div>
     </>
