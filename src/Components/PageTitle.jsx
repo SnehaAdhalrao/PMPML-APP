@@ -6,7 +6,7 @@ import { CgProfile } from "react-icons/cg";
 
 export default function PageTitle({text}) {
   return (
-    <div className='mx-auto bg-green-400 flex items-center justify-between mb-10 p-5  h-[30px]'>
+    <div className='mx-auto w-full bg-green-400 flex items-center justify-between mb-10 p-5  h-[30px]'>
        
 <IconContext.Provider value={{  className: "global-class-name size-5em" }}>
   <div>
