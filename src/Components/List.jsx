@@ -10,7 +10,7 @@ export default function List() {
       <Link to="/home">HOME</Link>
       <Link to="/Complaint">Complaints</Link>
       <Link to="/Share">Share Me</Link>
-      <Link to="/Pass">Pass making</Link>
+      <Link to="/Pass">Pass_forming</Link>
       <Routing/>
       
   </div>
