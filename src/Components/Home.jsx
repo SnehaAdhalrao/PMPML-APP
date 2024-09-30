@@ -8,6 +8,7 @@ import { FaRegStar } from "react-icons/fa";
 import Button from './Button';
 import Home_footer from './Home_footer';
 import Home_review from './Home_review';
+import PMPML_Bus from "../assets/PMPML_Bus.png";
 
 
 export default function Home() {
@@ -58,7 +59,7 @@ export default function Home() {
             </div>
             
             <div><span className='text-pink-800 text-sm'>4.2, </span><span className='text-smtracking-tighest'>23k followers</span></div>
-            <p className='pl-16 leading-5'>PCCOER offers a seamless way to explore the city's bus routes. With real-time updates, it simplifies pass booking, complaint submissions, and route navigation. The app is designed to enhance commuter convenience, ensuring a smooth public transport experience. It's a user-friendly solution tailored for easy access to essential PMPML services.</p>
+            <p className='pl-16 leading-4 text-sm'>PCCOER offers a seamless way to explore the city's bus routes. With real-time updates, it simplifies pass booking, complaint submissions, and route navigation. The app is designed to enhance commuter convenience, ensuring a smooth public transport experience. It's a user-friendly solution tailored for easy access to essential PMPML services.</p>
 
             <div className="review">
               <Home_review/>
@@ -77,7 +78,13 @@ export default function Home() {
 
 
 
-          <div className="rigthalf w-[50%] h-[450px] bg-black">rightimg</div>
+          <div className="rigthalf   w-[50%] h-[450px] bg-cover rounded-lg"  style={{
+    backgroundImage: `url(${PMPML_Bus})`,
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+  }}>
+            {/* <img src={PMPML_Bus} alt="" /> */}
+          </div>
         </div>
 
 
