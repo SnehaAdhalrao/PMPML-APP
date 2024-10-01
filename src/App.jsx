@@ -12,6 +12,7 @@ import Ticket_page from './Components/Ticket_page';
 import Enter_pin from './Components/Enter_pin';
 import Payment_processing from './Components/Payment_processing';
 import Login_register from './Components/Login_register';
+import History from './Components/HIstory';
 
 
 
@@ -30,6 +31,7 @@ export default function App() {//   REMEMBER************just components bnane ke
         <Route path="/Enter_pin" element={<Enter_pin />} />
         <Route path="/Payment_processing" element={<Payment_processing />} />
         <Route path="/register_or_login" element={<Login_register />} />
+        <Route path="/history" element={<History />} />
       </Routes>
     </Router>
 

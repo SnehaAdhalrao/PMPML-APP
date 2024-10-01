@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom'; // Import useNavigate
+import { useNavigate } from 'react-router-dom';
 import BusBackground from '../assets/Registration_bg.png';
+import axios from 'axios';
 
 export default function Registration() {
   const [formData, setFormData] = useState({
@@ -11,7 +12,7 @@ export default function Registration() {
     password: '',
     confirmPassword: ''
   });
-  const navigate = useNavigate(); // Initialize useNavigate
+  const navigate = useNavigate();
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -21,33 +22,34 @@ export default function Registration() {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Form submission logic here
-    console.log("Form data submitted:", formData);
+    if (formData.password !== formData.confirmPassword) {
+      alert('Passwords do not match!');
+      return;
+    }
 
-    // Reset the form data
-    setFormData({
-      firstName: '',
-      lastName: '',
-      email: '',
-      gender: '',
-      password: '',
-      confirmPassword: ''
-    });
+    try {
+      const response = await axios.post('http://localhost:5000/api/register', formData);
+      console.log(response.data);
 
-    // Redirect to home page after submission
-    navigate('/'); 
-  };
-
-  const handleLoginClick = () => {
-    // Redirect to login page when Login button is clicked
-    navigate('/'); // Adjust the path as necessary
+      if (response.data.success) {
+        alert('Registration successful!');
+        // Delay redirect by 2 seconds after successful registration
+        setTimeout(() => {
+          navigate('/');
+        }, 2000);
+      } else {
+        alert('Registration failed: ' + response.data.message);
+      }
+    } catch (error) {
+      console.error('Error during registration:', error);
+      alert('Registration failed. Please try again.');
+    }
   };
 
   return (
     <div className="relative h-screen w-full bg-cover" style={{ backgroundImage: `url(${BusBackground})` }}>
-      {/* Registration Card */}
       <div className="absolute inset-0 flex justify-center items-center">
         <form 
           onSubmit={handleSubmit}
@@ -55,7 +57,6 @@ export default function Registration() {
         >
           <h2 className="text-xl font-semibold mb-4 text-center">Enter your details</h2>
           
-          {/* Registration Fields without Labels */}
           <input 
             type="text"
             placeholder="First name"
@@ -105,20 +106,12 @@ export default function Registration() {
             className="w-full mb-3 p-2 border rounded"
           />
 
-          {/* Buttons */}
-          <div className="flex justify-between mt-6">
+          <div className="flex justify-center mt-6">
             <button 
               type="submit"
               className="bg-green-500 text-white py-2 px-4 rounded-md hover:bg-green-600"
             >
-              Submit
-            </button>
-            <button 
-              type="button"
-              className="bg-green-500 text-white py-2 px-4 rounded-md hover:bg-green-600"
-              onClick={handleLoginClick} // Use the new function for navigation
-            >
-              Login
+              Register
             </button>
           </div>
         </form>

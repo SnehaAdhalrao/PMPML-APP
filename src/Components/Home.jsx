@@ -32,8 +32,8 @@ export default function Home() {
       
       <div className="navbar w-3/4 h-16 bg-zinc-300 mx-auto flex items-center gap-10 justify-between p-4 border-b-[1px] border-black">
         <div className="flex gap-10 m-12">
-          {["Home", "Pass Booking","Ticket booking", "Complaints", "Map", "Share Me"].map((ele, index) => {
-            const paths = ["/", "/pass","/ticket", "/complaint", "/map", "/share"];
+          {["Home", "Pass Booking","Ticket booking", "Complaints", "Map","history","Share Me"].map((ele, index) => {
+            const paths = ["/", "/pass","/ticket", "/complaint", "/map","/history", "/share"];
             return (
               <Link key={index} to={paths[index]}>
                 {index === 4 ? (

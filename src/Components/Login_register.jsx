@@ -1,24 +1,36 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom'; // Import useNavigate
+import { useNavigate } from 'react-router-dom';
 import Registration_bg from '../assets/Registration_bg.png';
+import axios from 'axios';
 
 export default function Login_register() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [rememberMe, setRememberMe] = useState(false);
-  const navigate = useNavigate(); // Initialize useNavigate
+  const navigate = useNavigate();
 
-  const handleLogin = () => {
-    // Implement login logic here
-    console.log({ email, password, rememberMe });
+  const handleLogin = async () => {
+    try {
+      const response = await axios.post('http://localhost:5000/api/login', {
+        email,
+        password,
+      });
+      console.log(response.data);
 
-    // Redirect to home page after successful login
-    navigate('/'); 
+      if (response.data.success) {
+        // Redirect to the home page after a successful login
+        navigate('/');
+      } else {
+        alert('Login failed: ' + response.data.message);
+      }
+    } catch (error) {
+      console.error('Error during login:', error);
+      alert('Login failed. Please try again.');
+    }
   };
 
   const handleRegister = () => {
-    // Redirect to Registration component
-    navigate('/register'); // Adjust the path as necessary
+    navigate('/register'); // Redirect to Registration component
   };
 
   return (
@@ -50,7 +62,6 @@ export default function Login_register() {
             className="w-full p-3 rounded-lg bg-gray-100 focus:outline-none focus:ring-2 focus:ring-green-500"
           />
           <span className="absolute right-3 top-3 cursor-pointer text-gray-600">
-            {/* Icon for password visibility toggle */}
             👁️
           </span>
         </div>
@@ -71,14 +82,14 @@ export default function Login_register() {
         </div>
 
         <button
-          onClick={handleLogin} // Login button redirects to home
+          onClick={handleLogin}
           className="w-full bg-green-500 text-white py-3 rounded-lg hover:bg-green-600 mb-4"
         >
           Login
         </button>
 
         <button
-          onClick={handleRegister} // Register button redirects to registration
+          onClick={handleRegister}
           className="w-full bg-transparent border border-green-500 text-green-500 py-3 rounded-lg hover:bg-green-500 hover:text-white"
         >
           Register now
