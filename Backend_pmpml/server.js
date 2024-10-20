@@ -11,18 +11,26 @@ app.use(express.json());
 app.use(cors());
 
 // MongoDB connection
-mongoose.connect('mongodb://localhost:27017/PMPML_database', {
+mongoose.connect('mongodb://localhost:27017/PMPML_database2', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 })
   .then(() => console.log('MongoDB connected'))
-  .catch(err => console.log('MongoDB connection error:', err));
+  .catch(err => console.error('MongoDB connection error:', err));
 
 // Register route
 app.post('/api/register', async (req, res) => {
-  const { firstName, lastName, email, gender, password } = req.body;
+  const { firstName, lastName, email, gender, age, phone, password } = req.body;
 
   try {
+    // Validate age and phone number
+    if (age < 0) {
+      return res.status(400).json({ success: false, message: 'Age cannot be negative' });
+    }
+    if (!/^\d{10}$/.test(phone)) {
+      return res.status(400).json({ success: false, message: 'Phone number must be exactly 10 digits' });
+    }
+
     // Check if user already exists
     const existingUser = await User.findOne({ email });
     if (existingUser) {
@@ -35,12 +43,13 @@ app.post('/api/register', async (req, res) => {
       lastName,
       email,
       gender,
+      age,
+      phone,
       password,
     });
 
     await newUser.save();
-
-    res.json({ success: true, message: 'User registered successfully' });
+    res.status(201).json({ success: true, message: 'User registered successfully' });
   } catch (error) {
     console.error('Error saving user:', error);
     res.status(500).json({ success: false, message: 'Internal server error' });
@@ -70,6 +79,7 @@ app.post('/api/login', async (req, res) => {
   }
 });
 
+// Start server
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
 });
