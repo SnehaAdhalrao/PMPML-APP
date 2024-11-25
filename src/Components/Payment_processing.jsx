@@ -1,21 +1,21 @@
-import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 const Payment_processing = () => {
-  const [isProcessing, setIsProcessing] = useState(true);
-  const navigate = useNavigate();
+  const [isProcessing, setIsProcessing] = useState(true)
+  const navigate = useNavigate()
 
   useEffect(() => {
     const timer1 = setTimeout(() => {
-      setIsProcessing(false);
+      setIsProcessing(false)
       const timer2 = setTimeout(() => {
-        navigate('/'); // Redirect to home page after displaying "Recharge Successful"
-      }, 3000); // 3 seconds after showing success message
-      return () => clearTimeout(timer2);
-    }, 5000); // 5 seconds for processing
+        navigate('/') // Redirect to home page after displaying "Recharge Successful"
+      }, 3000) // 3 seconds after showing success message
+      return () => clearTimeout(timer2)
+    }, 5000) // 5 seconds for processing
 
-    return () => clearTimeout(timer1);
-  }, [navigate]);
+    return () => clearTimeout(timer1)
+  }, [navigate])
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-white text-black">
@@ -31,7 +31,7 @@ const Payment_processing = () => {
         </>
       ) : (
         <>
-          <h1 className="text-3xl font-bold mb-4">Recharge Successful</h1>
+          <h1 className="text-3xl font-bold mb-4">Payment Successful</h1>
           <div className="flex items-center justify-center mb-4">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -53,7 +53,7 @@ const Payment_processing = () => {
         </>
       )}
     </div>
-  );
-};
+  )
+}
 
-export default Payment_processing;
+export default Payment_processing

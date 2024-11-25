@@ -15,6 +15,7 @@ import Enter_pin from './Components/Enter_pin'
 import Payment_processing from './Components/Payment_processing'
 import Login_register from './Components/Login_register'
 import Complaits_page from './Components/Complaits_page'
+import MapPage from './Components/MapPage'
 
 export default function App() {
   //   REMEMBER************just components bnane ke baad brach open krni hain
@@ -27,12 +28,7 @@ export default function App() {
           {/* <Route path="/complait" element={<Complaits_page />} /> */}
           <Route path="/complaints" element={<Complaits_page />} />
 
-          <Route
-            path="/map"
-            element={
-              <div className="text-center mt-20">Map Page Coming Soon...</div>
-            }
-          />
+          <Route path="/map" element={<MapPage />} />
           <Route path="/share" element={<Share_me />} />
           <Route path="/register" element={<Registration />} />
           <Route path="/ticket" element={<Ticket_page />} />
